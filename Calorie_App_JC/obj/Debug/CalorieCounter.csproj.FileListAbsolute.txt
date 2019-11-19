@@ -1,0 +1,15 @@
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\bin\Debug\CalorieCounter.mdf
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\bin\Debug\CalorieCounter_log.ldf
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\bin\Debug\CalorieCounter.exe.config
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\bin\Debug\CalorieCounter.exe
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\bin\Debug\CalorieCounter.pdb
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.csprojAssemblyReference.cache
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.frmLogin.resources
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.Properties.Resources.resources
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.csproj.GenerateResource.cache
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.exe
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.pdb
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.frmSignUp.resources
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.frmMainScreen.resources
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.frmAddItem.resources
+\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\obj\Debug\CalorieCounter.frmDeleteItem.resources
