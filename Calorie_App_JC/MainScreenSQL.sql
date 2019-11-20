@@ -58,4 +58,3 @@ CASE
 WHEN meal_type.meal_type = 'Breakfast' THEN 1
 WHEN meal_type.meal_type = 'Lunch' THEN 2
 ELSE 3 END;
-

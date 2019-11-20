@@ -22,6 +22,21 @@ namespace CalorieCounter
 
         private void LoadOverallTrending(int userID)
         {
+            // Create new database object
+            DatabaseMethods dbMethods = new DatabaseMethods();
+
+            // Assign datatset to chart's datasource
+            chrtTrending.DataSource = dbMethods.GetChartDataOverall(userID).Tables[0];
+
+            Console.WriteLine(chrtTrending.DataSource);
+            
+
+            
+
+        }
+
+        private void LoadMenuTrending(int userID)
+        {
 
         }
 
@@ -36,7 +51,10 @@ namespace CalorieCounter
 
         private void LoadTableData(int userID)
         {
+            // Create new database object
+            DatabaseMethods dbMethods = new DatabaseMethods();
 
+            dgvConsumptionData.DataSource = dbMethods.GetTableData(userID).Tables[0];
         }
 
         private void btnAddFood_Click(object sender, EventArgs e)
@@ -60,6 +78,19 @@ namespace CalorieCounter
         {
             Program.runProgram = false;
             Application.Exit();
+        }
+
+        private void cbTrending_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbTrending.SelectedIndex)
+            {
+                case 0:
+                    LoadOverallTrending(frmLogin.UserID);
+                    break;
+                case 1:
+                    LoadMenuTrending(frmLogin.UserID);
+                    break;
+            }
         }
     }
 }

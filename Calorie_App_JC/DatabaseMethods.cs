@@ -29,10 +29,12 @@ namespace CalorieCounter
             SqlConnection conn = new SqlConnection(DBConnectionString());
 
             // Setup SQL commands to check if user already exists
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT email from users WHERE email ='" + email + "'";
-            cmd.Connection = conn;
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = "SELECT email from users WHERE email ='" + email + "'",
+                Connection = conn
+            };
             SqlDataReader reader;
 
             // Open connection
@@ -130,9 +132,35 @@ namespace CalorieCounter
         ///// Methods for user authentication /////
 
         ///// Methods for processing data for data visuals /////
-        public void GetChartDataOverall()
+        public DataSet GetChartDataOverall(int userID)
         {
+            // Setup connection to CalorieCounter DB
+            SqlConnection conn = new SqlConnection(DBConnectionString());
 
+            // Setup SQL commands and query
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = @"SELECT
+                                CAST(meals_ref.created_at AS DATE) AS meal_date
+                                ,SUM(foods.calories * meals_ref.quantity) AS total_calories
+                                FROM
+                                meals_ref
+                                LEFT JOIN foods ON (foods.id = meals_ref.food_id)
+                                WHERE
+                                user_id = " + userID +
+                                " GROUP BY CAST(meals_ref.created_at AS DATE)",
+                Connection = conn
+            };
+            SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
+
+            // Define dataset
+            DataSet ds = new DataSet();
+
+            // Fill dataset with query results
+            dAdapter.Fill(ds);
+
+            return ds;
         }
 
         public void GetChartDataByMeal()
@@ -168,7 +196,6 @@ namespace CalorieCounter
             reader = cmd.ExecuteReader();
 
             // Read data that was returned
-            // This while loop is a little uneccesary - Clean up?
             if (reader.Read() && !reader.IsDBNull(0))
             {
                 return reader.GetString(reader.GetOrdinal("total_calories"));
@@ -179,12 +206,46 @@ namespace CalorieCounter
             }
         }
 
-        public SqlDataAdapter GetTableData(int userID)
+        public DataSet GetTableData(int userID)
         {
-            // Setup data adapter to return and populate to datagridview
-            SqlDataAdapter tableData = new SqlDataAdapter();
+            // Setup connection to CalorieCounter DB
+            SqlConnection conn = new SqlConnection(DBConnectionString());
 
-            return tableData;
+            // Setup SQL commands and query
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = @"SELECT
+                                CAST(meals_ref.created_at AS DATE) AS meal_date
+                                ,meal_type.meal_type
+                                ,foods.category
+                                ,foods.name
+                                ,foods.calories
+                                ,meals_ref.quantity
+                                ,foods.calories * meals_ref.quantity AS total_calories
+                                FROM
+                                meals_ref
+                                LEFT JOIN foods ON (foods.id = meals_ref.food_id)
+                                LEFT JOIN meal_type ON (meal_type.id = meals_ref.meal_type_id)
+                                WHERE
+                                user_id = " + userID + 
+                                @" ORDER BY
+                                meals_ref.created_at,
+                                CASE
+                                WHEN meal_type.meal_type = 'Breakfast' THEN 1
+                                WHEN meal_type.meal_type = 'Lunch' THEN 2
+                                ELSE 3 END",
+                Connection = conn
+            };
+            SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
+
+            // Define dataset
+            DataSet ds = new DataSet();
+
+            // Fill dataset with query results
+            dAdapter.Fill(ds);
+
+            return ds;
         }
 
         ///// Methods for Adding / Removing Food Items /////
