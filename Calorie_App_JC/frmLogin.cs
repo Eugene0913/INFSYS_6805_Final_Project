@@ -54,7 +54,7 @@ namespace CalorieCounter
             string loginEmail = tbLoginEmail.Text;
             string loginPassword = tbLoginPassword.Text;
 
-            Tuple<bool, int> userAuthReturns = dbMethods.authenticateUser(loginEmail, loginPassword);
+            Tuple<bool, int> userAuthReturns = dbMethods.AuthenticateUser(loginEmail, loginPassword);
 
             // Authenticate user
             if (userAuthReturns.Item1)

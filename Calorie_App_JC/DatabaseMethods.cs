@@ -14,19 +14,19 @@ namespace CalorieCounter
     {
 
         // Expose connection string to other methods
-        public string dbConnectionString()
+        public string DBConnectionString()
         {
             return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=\\Mac\Home\Documents\UMSL\INFSYS_6805_C_Sharp\Projects\CalorieCounter\CalorieCounter.mdf;Integrated Security=True";
         }
 
         ///// Methods for user sign up /////
-        public bool checkExistingUser(string email)
+        public bool CheckExistingUser(string email)
         {
             // Boolean return variable
             bool userExists = false;
 
             // Setup connection to CalorieCounter DB
-            SqlConnection conn = new SqlConnection(dbConnectionString());
+            SqlConnection conn = new SqlConnection(DBConnectionString());
 
             // Setup SQL commands to check if user already exists
             SqlCommand cmd = new SqlCommand();
@@ -58,17 +58,19 @@ namespace CalorieCounter
             return userExists;
         }
 
-        public void insertNewUser(string first_name, string last_name, string email, string password)
+        public void InsertNewUser(string first_name, string last_name, string email, string password)
         {
             // Setup connection to CalorieCounter DB
-            SqlConnection conn = new SqlConnection(dbConnectionString());
+            SqlConnection conn = new SqlConnection(DBConnectionString());
 
             // Setup SQL commands to check if user already exists
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "INSERT INTO users (first_name, last_name, email, password) VALUES ('" +
-                                   first_name + "','" + last_name + "','" + email + "','" + password + "')";
-            cmd.Connection = conn;
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = "INSERT INTO users (first_name, last_name, email, password) VALUES ('" +
+                                   first_name + "','" + last_name + "','" + email + "','" + password + "')",
+                Connection = conn
+            };
 
             // Open connection
             conn.Open();
@@ -83,20 +85,22 @@ namespace CalorieCounter
         ///// Methods for user sign up /////
 
         ///// Methods for user authentication /////
-        public Tuple<bool, int> authenticateUser(string email, string password)
+        public Tuple<bool, int> AuthenticateUser(string email, string password)
         {
             // Return variables
             bool userAuth = false;
             int userID = -1;
 
             // Setup connection to CalorieCounter DB
-            SqlConnection conn = new SqlConnection(dbConnectionString());
+            SqlConnection conn = new SqlConnection(DBConnectionString());
 
             // Setup SQL commands and query
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT id, email, password FROM users WHERE email = '" + email + "'";
-            cmd.Connection = conn;
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = "SELECT id, email, password FROM users WHERE email = '" + email + "'",
+                Connection = conn
+            };
             SqlDataReader reader;
 
             // Open connection
@@ -124,30 +128,77 @@ namespace CalorieCounter
             return Tuple.Create(userAuth, userID);
         }
         ///// Methods for user authentication /////
-        
+
+        ///// Methods for processing data for data visuals /////
+        public void GetChartDataOverall()
+        {
+
+        }
+
+        public void GetChartDataByMeal()
+        {
+
+        }
+
+        public string GetDailyCalorieData(int userID)
+        {
+            // Setup connection to CalorieCounter DB
+            SqlConnection conn = new SqlConnection(DBConnectionString());
+
+            // Setup SQL commands and query
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = @"SELECT
+                                CAST(SUM(foods.calories * meals_ref.quantity) AS VARCHAR(10)) AS total_calories
+                                FROM
+                                meals_ref
+                                LEFT JOIN foods ON(foods.id = meals_ref.food_id)
+                                WHERE
+                                user_id = " + userID +
+                                " AND CAST(meals_ref.created_at AS DATE) = CAST(GETDATE() AS DATE)",
+                Connection = conn
+            };
+            SqlDataReader reader;
+
+            // Open connection
+            conn.Open();
+
+            // Execute insert
+            reader = cmd.ExecuteReader();
+
+            // Read data that was returned
+            // This while loop is a little uneccesary - Clean up?
+            if (reader.Read() && !reader.IsDBNull(0))
+            {
+                return reader.GetString(reader.GetOrdinal("total_calories"));
+            }
+            else
+            {
+                return "0";
+            }
+        }
+
+        public SqlDataAdapter GetTableData(int userID)
+        {
+            // Setup data adapter to return and populate to datagridview
+            SqlDataAdapter tableData = new SqlDataAdapter();
+
+            return tableData;
+        }
+
         ///// Methods for Adding / Removing Food Items /////
         public string LoadFoodItems()
         {
             return "A";
         }
 
-        public void addFoodItem(string foodCategory, string FoodItem)
+        public void AddFoodItem(string foodCategory, string FoodItem)
         {
 
         }
 
         public void deleteFoodItem()
-        {
-
-        }
-
-        ///// Methods for processing data for data visuals /////
-        public void getChartData()
-        {
-
-        }
-
-        public void getTableData()
         {
 
         }

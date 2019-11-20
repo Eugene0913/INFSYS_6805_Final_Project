@@ -15,6 +15,28 @@ namespace CalorieCounter
         public frmMainScreen()
         {
             InitializeComponent();
+            LoadOverallTrending(frmLogin.UserID);
+            LoadDailyCalories(frmLogin.UserID);
+            LoadTableData(frmLogin.UserID);
+        }
+
+        private void LoadOverallTrending(int userID)
+        {
+
+        }
+
+        private void LoadDailyCalories(int userID)
+        {
+            // Create new database object
+            DatabaseMethods dbMethods = new DatabaseMethods();
+
+            /// Returned valued to tbDailyCals
+            tbDailyCals.Text = dbMethods.GetDailyCalorieData(userID);
+        }
+
+        private void LoadTableData(int userID)
+        {
+
         }
 
         private void btnAddFood_Click(object sender, EventArgs e)

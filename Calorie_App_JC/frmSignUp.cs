@@ -62,14 +62,14 @@ namespace CalorieCounter
             String password = tbPassword.Text;
 
             // Query db to check if user already exists
-            if (dbMethods.checkExistingUser(email))
+            if (dbMethods.CheckExistingUser(email))
             {
                 MessageBox.Show("Account already exists. Returning to Main Menu");
             }
             // Insert new user data if user does not exist
             else
             {
-                dbMethods.insertNewUser(first_name, last_name, email, password);
+                dbMethods.InsertNewUser(first_name, last_name, email, password);
                 frmLogin.UserRequiresSignUp = false;
             }
 

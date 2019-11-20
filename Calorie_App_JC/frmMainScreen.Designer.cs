@@ -36,7 +36,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
             this.lblCountCalsNow = new System.Windows.Forms.Label();
             this.chrtTrending = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvConsumptionData = new System.Windows.Forms.DataGridView();
             this.calorieCounterDataSet = new CalorieCounter.CalorieCounterDataSet();
             this.calorieCounterDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbTrending = new System.Windows.Forms.ComboBox();
@@ -46,8 +46,17 @@
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btDeleteItem = new System.Windows.Forms.Button();
             this.btnAddFood = new System.Windows.Forms.Button();
+            this.lblTodayCals = new System.Windows.Forms.Label();
+            this.tbDailyCals = new System.Windows.Forms.TextBox();
+            this.meal_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.meal_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calories = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total_calories = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chrtTrending)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsumptionData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calorieCounterDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calorieCounterDataSetBindingSource)).BeginInit();
             this.gbNavigation.SuspendLayout();
@@ -87,15 +96,29 @@
             title1.Text = "Calories Trending";
             this.chrtTrending.Titles.Add(title1);
             // 
-            // dataGridView1
+            // dgvConsumptionData
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(31, 626);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 82;
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(1408, 482);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvConsumptionData.AllowUserToAddRows = false;
+            this.dgvConsumptionData.AllowUserToDeleteRows = false;
+            this.dgvConsumptionData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvConsumptionData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvConsumptionData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConsumptionData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.meal_date,
+            this.meal_type,
+            this.category,
+            this.calories,
+            this.name,
+            this.quantity,
+            this.total_calories});
+            this.dgvConsumptionData.Location = new System.Drawing.Point(31, 792);
+            this.dgvConsumptionData.Name = "dgvConsumptionData";
+            this.dgvConsumptionData.RowHeadersWidth = 82;
+            this.dgvConsumptionData.RowTemplate.Height = 33;
+            this.dgvConsumptionData.Size = new System.Drawing.Size(1931, 625);
+            this.dgvConsumptionData.TabIndex = 4;
             // 
             // calorieCounterDataSet
             // 
@@ -137,7 +160,7 @@
             this.gbNavigation.Controls.Add(this.btDeleteItem);
             this.gbNavigation.Controls.Add(this.btnAddFood);
             this.gbNavigation.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbNavigation.Location = new System.Drawing.Point(1454, 578);
+            this.gbNavigation.Location = new System.Drawing.Point(1454, 244);
             this.gbNavigation.Name = "gbNavigation";
             this.gbNavigation.Size = new System.Drawing.Size(508, 530);
             this.gbNavigation.TabIndex = 7;
@@ -188,6 +211,69 @@
             this.btnAddFood.UseVisualStyleBackColor = true;
             this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
+            // lblTodayCals
+            // 
+            this.lblTodayCals.AutoSize = true;
+            this.lblTodayCals.BackColor = System.Drawing.Color.Transparent;
+            this.lblTodayCals.Font = new System.Drawing.Font("Arial Rounded MT Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTodayCals.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblTodayCals.Location = new System.Drawing.Point(31, 663);
+            this.lblTodayCals.Name = "lblTodayCals";
+            this.lblTodayCals.Size = new System.Drawing.Size(777, 111);
+            this.lblTodayCals.TabIndex = 9;
+            this.lblTodayCals.Text = "Calories Today:";
+            // 
+            // tbDailyCals
+            // 
+            this.tbDailyCals.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDailyCals.Location = new System.Drawing.Point(798, 658);
+            this.tbDailyCals.Name = "tbDailyCals";
+            this.tbDailyCals.Size = new System.Drawing.Size(641, 116);
+            this.tbDailyCals.TabIndex = 10;
+            this.tbDailyCals.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // meal_date
+            // 
+            this.meal_date.HeaderText = "Date";
+            this.meal_date.MinimumWidth = 10;
+            this.meal_date.Name = "meal_date";
+            // 
+            // meal_type
+            // 
+            this.meal_type.HeaderText = "Meal";
+            this.meal_type.MinimumWidth = 10;
+            this.meal_type.Name = "meal_type";
+            // 
+            // category
+            // 
+            this.category.HeaderText = "Category";
+            this.category.MinimumWidth = 10;
+            this.category.Name = "category";
+            // 
+            // calories
+            // 
+            this.calories.HeaderText = "Calories";
+            this.calories.MinimumWidth = 10;
+            this.calories.Name = "calories";
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.MinimumWidth = 10;
+            this.name.Name = "name";
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.MinimumWidth = 10;
+            this.quantity.Name = "quantity";
+            // 
+            // total_calories
+            // 
+            this.total_calories.HeaderText = "Total Calories";
+            this.total_calories.MinimumWidth = 10;
+            this.total_calories.Name = "total_calories";
+            // 
             // frmMainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -197,10 +283,12 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1974, 1429);
+            this.Controls.Add(this.tbDailyCals);
+            this.Controls.Add(this.lblTodayCals);
             this.Controls.Add(this.gbNavigation);
             this.Controls.Add(this.lblTrending);
             this.Controls.Add(this.cbTrending);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvConsumptionData);
             this.Controls.Add(this.chrtTrending);
             this.Controls.Add(this.lblCountCalsNow);
             this.ForeColor = System.Drawing.Color.Transparent;
@@ -208,9 +296,9 @@
             this.MinimumSize = new System.Drawing.Size(2000, 1500);
             this.Name = "frmMainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "S";
+            this.Text = "Main Screen";
             ((System.ComponentModel.ISupportInitialize)(this.chrtTrending)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConsumptionData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calorieCounterDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calorieCounterDataSetBindingSource)).EndInit();
             this.gbNavigation.ResumeLayout(false);
@@ -223,7 +311,7 @@
 
         private System.Windows.Forms.Label lblCountCalsNow;
         private System.Windows.Forms.DataVisualization.Charting.Chart chrtTrending;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvConsumptionData;
         private System.Windows.Forms.BindingSource calorieCounterDataSetBindingSource;
         private CalorieCounterDataSet calorieCounterDataSet;
         private System.Windows.Forms.ComboBox cbTrending;
@@ -233,5 +321,14 @@
         private System.Windows.Forms.Button btDeleteItem;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label lblTodayCals;
+        private System.Windows.Forms.TextBox tbDailyCals;
+        private System.Windows.Forms.DataGridViewTextBoxColumn meal_date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn meal_type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn calories;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total_calories;
     }
 }
