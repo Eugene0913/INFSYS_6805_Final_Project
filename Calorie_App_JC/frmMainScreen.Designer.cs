@@ -45,7 +45,6 @@
             this.gbNavigation = new System.Windows.Forms.GroupBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.btDeleteItem = new System.Windows.Forms.Button();
             this.btnAddFood = new System.Windows.Forms.Button();
             this.lblTodayCals = new System.Windows.Forms.Label();
             this.tbDailyCals = new System.Windows.Forms.TextBox();
@@ -108,7 +107,7 @@
             this.cbTrending.Items.AddRange(new object[] {
             "Overall",
             "Meal"});
-            this.cbTrending.Location = new System.Drawing.Point(1654, 127);
+            this.cbTrending.Location = new System.Drawing.Point(1654, 124);
             this.cbTrending.Name = "cbTrending";
             this.cbTrending.Size = new System.Drawing.Size(295, 50);
             this.cbTrending.TabIndex = 5;
@@ -118,7 +117,7 @@
             // 
             this.lblTrending.AutoSize = true;
             this.lblTrending.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrending.Location = new System.Drawing.Point(1444, 124);
+            this.lblTrending.Location = new System.Drawing.Point(1444, 121);
             this.lblTrending.Name = "lblTrending";
             this.lblTrending.Size = new System.Drawing.Size(204, 51);
             this.lblTrending.TabIndex = 6;
@@ -129,12 +128,11 @@
             this.gbNavigation.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.gbNavigation.Controls.Add(this.btnExit);
             this.gbNavigation.Controls.Add(this.btnLogOut);
-            this.gbNavigation.Controls.Add(this.btDeleteItem);
             this.gbNavigation.Controls.Add(this.btnAddFood);
             this.gbNavigation.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbNavigation.Location = new System.Drawing.Point(1441, 183);
+            this.gbNavigation.Location = new System.Drawing.Point(1441, 192);
             this.gbNavigation.Name = "gbNavigation";
-            this.gbNavigation.Size = new System.Drawing.Size(508, 489);
+            this.gbNavigation.Size = new System.Drawing.Size(508, 371);
             this.gbNavigation.TabIndex = 7;
             this.gbNavigation.TabStop = false;
             this.gbNavigation.Text = "Main Menu Options";
@@ -142,7 +140,7 @@
             // btnExit
             // 
             this.btnExit.ForeColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(12, 373);
+            this.btnExit.Location = new System.Drawing.Point(12, 271);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(479, 81);
             this.btnExit.TabIndex = 3;
@@ -153,24 +151,13 @@
             // btnLogOut
             // 
             this.btnLogOut.ForeColor = System.Drawing.Color.Black;
-            this.btnLogOut.Location = new System.Drawing.Point(12, 274);
+            this.btnLogOut.Location = new System.Drawing.Point(12, 172);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(479, 81);
             this.btnLogOut.TabIndex = 2;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
-            // btDeleteItem
-            // 
-            this.btDeleteItem.ForeColor = System.Drawing.Color.Black;
-            this.btDeleteItem.Location = new System.Drawing.Point(12, 175);
-            this.btDeleteItem.Name = "btDeleteItem";
-            this.btDeleteItem.Size = new System.Drawing.Size(479, 81);
-            this.btDeleteItem.TabIndex = 1;
-            this.btDeleteItem.Text = "Delete Food Item";
-            this.btDeleteItem.UseVisualStyleBackColor = true;
-            this.btDeleteItem.Click += new System.EventHandler(this.btDeleteItem_Click);
             // 
             // btnAddFood
             // 
@@ -264,7 +251,6 @@
         private System.Windows.Forms.Label lblTrending;
         private System.Windows.Forms.GroupBox gbNavigation;
         private System.Windows.Forms.Button btnAddFood;
-        private System.Windows.Forms.Button btDeleteItem;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblTodayCals;

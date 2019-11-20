@@ -12,7 +12,7 @@ namespace CalorieCounter
 {
     class DatabaseMethods
     {
-
+        // Methods to construct queries
         // Expose connection string to other methods
         public string DBConnectionString()
         {

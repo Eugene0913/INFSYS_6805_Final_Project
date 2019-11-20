@@ -74,12 +74,6 @@
     <Compile Include="frmAddItem.Designer.cs">
       <DependentUpon>frmAddItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDeleteItem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDeleteItem.Designer.cs">
-      <DependentUpon>frmDeleteItem.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,9 +96,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAddItem.resx">
       <DependentUpon>frmAddItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDeleteItem.resx">
-      <DependentUpon>frmDeleteItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

@@ -28,16 +28,12 @@ namespace CalorieCounter
             // Assign datatset to chart's datasource
             chrtTrending.DataSource = dbMethods.GetChartDataOverall(userID).Tables[0];
 
-            Console.WriteLine(chrtTrending.DataSource);
             
-
-            
-
         }
 
         private void LoadMenuTrending(int userID)
         {
-
+            
         }
 
         private void LoadDailyCalories(int userID)
@@ -61,12 +57,6 @@ namespace CalorieCounter
         {
             var frmAddItem = new frmAddItem();
             frmAddItem.Show();
-        }
-
-        private void btDeleteItem_Click(object sender, EventArgs e)
-        {
-            var frmDeleteItem = new frmDeleteItem();
-            frmDeleteItem.Show();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
