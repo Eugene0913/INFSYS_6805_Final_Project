@@ -40,7 +40,7 @@
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
-            this.btnMainMenu = new System.Windows.Forms.Button();
+            this.btnLoginScreen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblFirstName
@@ -167,18 +167,18 @@
             this.tbPassword.UseSystemPasswordChar = true;
             this.tbPassword.Click += new System.EventHandler(this.tbPassword_Click);
             // 
-            // btnMainMenu
+            // btnLoginScreen
             // 
-            this.btnMainMenu.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnMainMenu.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMainMenu.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.btnMainMenu.Location = new System.Drawing.Point(112, 943);
-            this.btnMainMenu.Name = "btnMainMenu";
-            this.btnMainMenu.Size = new System.Drawing.Size(770, 85);
-            this.btnMainMenu.TabIndex = 11;
-            this.btnMainMenu.Text = "Return to Main Menu";
-            this.btnMainMenu.UseVisualStyleBackColor = false;
-            this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
+            this.btnLoginScreen.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnLoginScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoginScreen.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnLoginScreen.Location = new System.Drawing.Point(112, 943);
+            this.btnLoginScreen.Name = "btnLoginScreen";
+            this.btnLoginScreen.Size = new System.Drawing.Size(770, 85);
+            this.btnLoginScreen.TabIndex = 11;
+            this.btnLoginScreen.Text = "Return to Login Screen";
+            this.btnLoginScreen.UseVisualStyleBackColor = false;
+            this.btnLoginScreen.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
             // frmSignUp
             // 
@@ -189,7 +189,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(974, 1179);
-            this.Controls.Add(this.btnMainMenu);
+            this.Controls.Add(this.btnLoginScreen);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbLastName);
@@ -225,6 +225,6 @@
         private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.TextBox tbPassword;
-        private System.Windows.Forms.Button btnMainMenu;
+        private System.Windows.Forms.Button btnLoginScreen;
     }
 }

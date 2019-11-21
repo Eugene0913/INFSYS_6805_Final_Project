@@ -249,9 +249,27 @@ namespace CalorieCounter
         }
 
         ///// Methods for Adding / Removing Food Items /////
-        public string LoadFoodItems()
+        public DataSet LoadFoodCategories()
         {
-            return "A";
+            // Setup connection to CalorieCounter DB
+            SqlConnection conn = new SqlConnection(DBConnectionString());
+
+            // Setup SQL commands and query
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = @"SELECT DISTINCT category FROM foods",
+                Connection = conn
+            };
+            SqlDataAdapter dAdapter = new SqlDataAdapter(cmd);
+
+            // Define dataset
+            DataSet ds = new DataSet();
+
+            // Fill dataset with query results
+            dAdapter.Fill(ds);
+
+            return ds;
         }
 
         public void AddFoodItem(string foodCategory, string FoodItem)
